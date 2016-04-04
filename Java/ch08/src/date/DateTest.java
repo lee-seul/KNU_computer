@@ -1,5 +1,4 @@
 package date;
-import java.util.Scanner;
 
 class Date{
 	private int year;

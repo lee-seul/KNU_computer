@@ -13,6 +13,12 @@ class BankAccount {
 		balance -= amount;
 	}
 	
+	public int transfer(int amount, BankAccount otherAccount){
+		this.balance -= amount;
+		otherAccount.balance += amount;
+		return otherAccount.balance;
+	}
+	
 	public String toString(){
 		return "현재 잔액은 " + balance + "입니다. ";
 	}
