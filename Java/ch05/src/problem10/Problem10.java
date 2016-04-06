@@ -1,7 +1,7 @@
-package problem;
+package problem10;
 import java.util.Scanner;
 
-public class Problem {
+public class Problem10 {
 	public static void main(String[] args) {
 		double AC, AE, BC, DE;
 		
