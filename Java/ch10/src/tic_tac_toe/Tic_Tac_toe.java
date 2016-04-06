@@ -16,7 +16,7 @@ public class Tic_Tac_toe {
 			for (int i = 0; i < 3; i++){
 				System.out.println(" " + board[i][0] + "| " + board[i][1] + "| " + board[i][2]);
 				if(i!=2)
-					System.out.println("----|----|-----");
+					System.out.println("--|--|---");
 			}
 			System.out.print("다음 수의 좌표를 입력하시오:");
 			x = scan.nextInt();
