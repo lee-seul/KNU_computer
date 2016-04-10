@@ -16,7 +16,6 @@ fprintf(stderr, "Insufficient Memory"); \
 exit(EXIT_FAILURE); \
 }
 
-
 listPointer create() {
 	listPointer china, japan, india, america, spain;
 	MALLOC(china, sizeof(*china));
@@ -103,7 +102,8 @@ void delete(listPointer *first, listPointer trail, listPointer x) {
 		trail->link = x->link;
 	else
 		*first = (*first)->link;
-	free(x);
+	free(x);
+
 }
 
 int main(void) {
