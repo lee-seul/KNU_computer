@@ -28,10 +28,10 @@ public class TheaterReserve {
 			else{
 				System.out.println("이미 예약된 자리입니다.");
 			}
-			scan.close();
+			
 			
 		}
-
+		
 	}
 
 }
