@@ -1,9 +1,11 @@
 #include <stdio.h>
 
+// while문 이용
+/*
 int searchnum(int list[], int num, int left, int right){
     int middle = 0;
 
-    while(right!=middle){
+    while(left<=right){
         middle = (left+right)/2;
         if(list[middle]>num)
             right = middle - 1;
@@ -13,6 +15,24 @@ int searchnum(int list[], int num, int left, int right){
             else
                 left = middle + 1;
         }
+    }
+    return -1;
+}
+*/
+
+
+// 재귀함수 이용
+int searchnum(int list[], int num, int left, int right){
+    int middle;
+    
+    if(left<=right){
+        middle = (left + right)/2;
+        if(num < list[middle])
+            return searchnum(list, num, left, middle -1);
+        else if(num > list[middle])
+            return searchnum(list, num, middle + 1, right);
+        else
+            return middle;
     }
     return -1;
 }
