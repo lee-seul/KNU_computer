@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct node* treePointer;
 typedef struct node{
@@ -17,6 +18,7 @@ node n1 = {15, &n2, &n3};
 
 
 treePointer search(treePointer head, int data){
+//    printf("%d\n", head);
     if(head==NULL)
         return NULL;
     if(head->data== data)
@@ -28,7 +30,7 @@ treePointer search(treePointer head, int data){
 }
 
 void insert(treePointer n, treePointer new){
-    printf("%d", new->data);
+//    printf("%d", new->data);
     if(!(n->leftChild))
         n->leftChild = new;
     else if (!(n->rightChild))
@@ -46,25 +48,26 @@ void printTree(treePointer head){
 }
 
 int main(void){
-    treePointer ptr = NULL, n = NULL;
-    treePointer new = malloc(sizeof(node*)); 
+    treePointer ptr = (node*)malloc(sizeof(node)); 
+    treePointer n = NULL;
+    treePointer new = (node*)malloc(sizeof(node)); 
     int value;
     
+
     new->data = 100;
     new->rightChild = NULL;
     new->leftChild = NULL;
     
-    ptr = &n1;
-    
-    
+    ptr = &n1; 
     printTree(ptr);
     
     printf("입력 : ");
     scanf("%d", &value);
-
-    n = search(ptr, value);
     
-    printf("%x %x\n", n , new);
+    printf("%x\n", search(ptr,value));
+    n = search(ptr, value);
+    printf("%x\n", n);    
+    
     insert(n, new);
 
     printTree(ptr);
