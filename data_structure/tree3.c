@@ -9,12 +9,11 @@ typedef struct node{
 }node;
 
 
-node n7 = {25, NULL, NULL};
-node n6 = {16, NULL, NULL};
-node n4 = {1, NULL, NULL};
-node n3 = {20, &n6, &n7};
-node n2 = {4, &n4, NULL};
-node n1 = {15, &n2, &n3};
+node n5 = {80, NULL, NULL};
+node n4 = {2, NULL, NULL};
+node n3 = {40, NULL, &n5};
+node n2 = {5, &n4, NULL};
+node n1 = {30, &n2, &n3};
 
 
 treePointer search(treePointer head, int data){
@@ -30,13 +29,14 @@ treePointer search(treePointer head, int data){
 }
 
 void insert(treePointer n, treePointer new){
-//    printf("%d", new->data);
-    if(!(n->leftChild))
-        n->leftChild = new;
-    else if (!(n->rightChild))
-        n->rightChild = new;
-    else
-        printf("말단 노드가 아님\n");
+    if(new->data > n->data){
+        if(n->rightChild) insert(n->rightChild, new);
+        else n->rightChild = new;
+    }
+   else if(new->data < n->data){
+       if(n->leftChild) insert(n->leftChild, new);
+       else n->leftChild = new;
+   }
 
 } 
 
@@ -54,19 +54,12 @@ int main(void){
     int value;
     
 
-    new->data = 100;
+    new->data = 35;
     new->rightChild = NULL;
     new->leftChild = NULL;
     
     ptr = &n1; 
     printTree(ptr);
-    
-    printf("입력 : ");
-    scanf("%d", &value);
-    
-    printf("%x\n", search(ptr,value));
-    n = search(ptr, value);
-    printf("%x\n", n);    
     
     insert(n, new);
 
