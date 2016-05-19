@@ -49,9 +49,7 @@ void printTree(treePointer head){
 
 int main(void){
     treePointer ptr = (node*)malloc(sizeof(node)); 
-    treePointer n = NULL;
     treePointer new = (node*)malloc(sizeof(node)); 
-    int value;
     
 
     new->data = 35;
@@ -61,7 +59,7 @@ int main(void){
     ptr = &n1; 
     printTree(ptr);
     
-    insert(n, new);
+    insert(ptr, new);
 
     printTree(ptr);
 

@@ -1,3 +1,11 @@
+//
+//  main.c
+//  test
+//
+//  Created by seul lee on 2016. 5. 19..
+//  Copyright © 2016년 seul lee. All rights reserved.
+//
+
 
 #include <stdio.h>
 #include <stdlib.h>
