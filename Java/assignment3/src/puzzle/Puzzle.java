@@ -83,44 +83,36 @@ class PuzzleFrame extends JFrame {
 				
 				if((x-1)>=0){
 					if((btn[x-1][y].getText()).equals("9")){
-						btn[x-1][y].setText(btn[x][y].getText());
-						btn[x-1][y].setVisible(true);
-						btn[x][y].setText("9");
-						btn[x][y].setVisible(false);
-						repaint();
+						moving(btn[x][y], btn[x-1][y]);
 					}
 				}
 				
 				if ((x+1)<=2){
 					if ((btn[x+1][y].getText()).equals("9")){
-						btn[x+1][y].setText(btn[x][y].getText());
-						btn[x+1][y].setVisible(true);
-						btn[x][y].setText("9");
-						btn[x][y].setVisible(false);
-						repaint();
+						moving(btn[x][y], btn[x+1][y]);
 					}
 				}
 				
 				if ((y+1)<=2){
 					if ((btn[x][y+1].getText()).equals("9")){
-						btn[x][y+1].setText(btn[x][y].getText());
-						btn[x][y+1].setVisible(true);
-						btn[x][y].setText("9");
-						btn[x][y].setVisible(false);
-						repaint();
+						moving(btn[x][y], btn[x][y+1]);
 					}
 				}
 				
 				if((y-1)>=0){
 					if ((btn[x][y-1].getText()).equals("9")){
-						btn[x][y-1].setText(btn[x][y].getText());
-						btn[x][y-1].setVisible(true);
-						btn[x][y].setText("9");
-						btn[x][y].setVisible(false);
-						repaint();
+						moving(btn[x][y], btn[x][y-1]);
 					}
 				}
 			}
+		}
+		
+		private void moving(JButton before, JButton after){
+			after.setText(before.getText());
+			after.setVisible(true);
+			before.setText("9");
+			before.setVisible(false);
+			repaint();
 		}
 	}
 }
