@@ -106,7 +106,7 @@ class PuzzleFrame extends JFrame {
 				}
 			}
 		}
-		
+
 		private void moving(JButton before, JButton after){
 			after.setText(before.getText());
 			after.setVisible(true);

@@ -3,10 +3,10 @@
 
 typedef struct treeNode{
     int data;
-    treeNode* left, right;
+    struct treeNode *left, *right;
 } treeNode;
 
-treeNode *search(treePointer root, int key){
+treeNode *search(treeNode *root, int key){
     if(!root) return NULL;
     if(key==root->data) return root;
     if(key < root->data) return search(root->left, key);
@@ -16,7 +16,7 @@ treeNode *search(treePointer root, int key){
 void insert(treeNode **node, int key){
     treeNode *p, *t;
     treeNode *n;
-
+    
     t = *node;
     p = NULL;
     while(t != NULL){
@@ -26,11 +26,11 @@ void insert(treeNode **node, int key){
         else t = t->right;
     }
     n = (treeNode*)malloc(sizeof(treeNode));
-
+    
     if(n == NULL) return;
     n->data = key;
     n->left = n->right = NULL;
-
+    
     if(p != NULL){
         if(key < p->data) p->left = n;
         else p->right = n;
@@ -40,10 +40,10 @@ void insert(treeNode **node, int key){
 
 void delete_node(treeNode **root, int key){
     treeNode *p, *child, *succ, *succ_p, *t;
-
+    
     p = NULL;
     t = *root;
-
+    
     while((t != NULL) && (t->data != key)){
         p = t;
         t = (key < t->data) ? t->left: t->right;
@@ -52,7 +52,7 @@ void delete_node(treeNode **root, int key){
         printf("Key is not in the tree\n");
         return ;
     }
-
+    
     if((t->left == NULL) && (t->right == NULL)){
         if(p != NULL){
             if(p->left == t) p->left = NULL;
@@ -60,7 +60,7 @@ void delete_node(treeNode **root, int key){
         }
         else *root = NULL;
     }
-
+    
     else if((t->left == NULL) || (t->right == NULL)){
         child = (t->left != NULL) ? t->left : t->right;
         if(p != NULL) {
@@ -68,8 +68,8 @@ void delete_node(treeNode **root, int key){
             else p->right = child;
         }
         else *root = child;
-    } 
-
+    }
+    
     else {
         succ_p =t;
         succ = t->right;
@@ -77,7 +77,7 @@ void delete_node(treeNode **root, int key){
             succ_p = succ;
             succ = t->left;
         }
-        if(succ_p->left = succ) succ_p->left = succ->right;
+        if((succ_p->left = succ)) succ_p->left = succ->right;
         else succ_p->right = succ->right;
         
         t->data = succ->data;
@@ -90,7 +90,7 @@ void delete_node(treeNode **root, int key){
 void inorder(treeNode *root){
     if(root){
         inorder(root->left);
-        printf("%d -> ", root->data);
+        printf("%d  ", root->data);
         inorder(root->right);
     }
 }
@@ -99,13 +99,25 @@ int main(void){
     int i;
     treeNode *n1 = NULL;
     insert(&n1, 15);
-
-    for(i = 0; i <5; i++){
+    
+    for(i = 0; i < 9; i++){
         insert(&n1, i+5);
-        insert(&n1, i+7);
     }
+    printf("초기 모습: ");
     inorder(n1);
-
-
+    printf("\n");
+    
+    insert(&n1, 20);
+    printf("노드 20 삽입 후 모습: ");
+    inorder(n1);
+    printf("\n");
+    
+    delete_node(&n1, 12);
+    printf("노드 12 삭제 후 모습 : ");
+    inorder(n1);
+    printf("\n");
+    
+    
+    
     return 0; 
 }
